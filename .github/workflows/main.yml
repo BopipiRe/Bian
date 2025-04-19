@@ -1,0 +1,17 @@
+name: Binance Amplitude Scanner (5min)
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'  # 每5分钟在UTC时间的0,5,10...分触发
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - run: pip install aiohttp pandas requests
+      - run: python binance_scanner.py
