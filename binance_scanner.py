@@ -1,5 +1,11 @@
 # 在脚本开头添加环境检查
 import os
+import asyncio
+from datetime import datetime, timedelta
+
+import aiohttp
+import pandas as pd
+import requests
 
 async def push_wechat(msg):
     # 从GitHub Secrets获取token
